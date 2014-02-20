@@ -1,7 +1,7 @@
 
 
 //
-// Generated on Fri Dec 27 2013 12:02:11 GMT-0500 (EST) by Nodejitsu, Inc (Using Codesurgeon).
+// Generated on Thu Feb 20 2014 15:02:12 GMT+0100 (CET) by Nodejitsu, Inc (Using Codesurgeon).
 // Version 1.2.2
 //
 
@@ -351,14 +351,14 @@ function paramifyString(str, params, mod) {
       }
     }
   }
-  return mod === str ? "([._a-zA-Z0-9-]+)" : mod;
+  return mod === str ? "([._a-zA-Z0-9-%\\s]+)" : mod;
 }
 
 function regifyString(str, params) {
   var matches, last = 0, out = "";
   while (matches = str.substr(last).match(/[^\w\d\- %@&]*\*[^\w\d\- %@&]*/)) {
     last = matches.index + matches[0].length;
-    matches[0] = matches[0].replace(/^\*/, "([_.()!\\ %@&a-zA-Z0-9-]+)");
+    matches[0] = matches[0].replace(/^\*/, "([_.()!\\ %@&a-zA-Z0-9-%\\s]+)");
     out += str.substr(0, matches.index) + matches[0];
   }
   str = out += str.substr(last);

@@ -60,18 +60,18 @@ vows.describe('director/core/mount').addBatch({
             '/foo/:dog': foodog
           });
 
-          assertRoute(root,        ['on'],                                      router.routes);
-          assertRoute(root,        ['after'],                                   router.routes);
-          assertRoute(root,        ['before'],                                  router.routes);
-          assertRoute(foobar,      ['nesting', 'on'],                           router.routes);
-          assertRoute(foostar,     ['nesting', 'deep', 'on'],                   router.routes);
-          assertRoute(foobar,      [ 'foo', 'bar', 'on'],                       router.routes);
-          assertRoute(foostar,     ['foo', '([_.()!\\ %@&a-zA-Z0-9-]+)', 'on'], router.routes);
-          assertRoute(fnArray,     ['foo', 'jitsu', 'then', 'on'],              router.routes);
-          assertRoute(foobar,      ['foo', 'jitsu', 'then', 'before'],          router.routes);
-          assertRoute(foobazzbuzz, ['foo', 'bazz', 'buzz', 'on'],               router.routes);
-          assertRoute(foostar,     ['foo', 'jitsu', 'then', 'now', 'on'],       router.routes);
-          assertRoute(foodog,      ['foo', '([._a-zA-Z0-9-]+)', 'on'],          router.routes);
+          assertRoute(root,        ['on'],                                          router.routes);
+          assertRoute(root,        ['after'],                                       router.routes);
+          assertRoute(root,        ['before'],                                      router.routes);
+          assertRoute(foobar,      ['nesting', 'on'],                               router.routes);
+          assertRoute(foostar,     ['nesting', 'deep', 'on'],                       router.routes);
+          assertRoute(foobar,      [ 'foo', 'bar', 'on'],                           router.routes);
+          assertRoute(foostar,     ['foo', '([_.()!\\ %@&a-zA-Z0-9-%\\s]+)', 'on'], router.routes);
+          assertRoute(fnArray,     ['foo', 'jitsu', 'then', 'on'],                  router.routes);
+          assertRoute(foobar,      ['foo', 'jitsu', 'then', 'before'],              router.routes);
+          assertRoute(foobazzbuzz, ['foo', 'bazz', 'buzz', 'on'],                   router.routes);
+          assertRoute(foostar,     ['foo', 'jitsu', 'then', 'now', 'on'],           router.routes);
+          assertRoute(foodog,      ['foo', '([._a-zA-Z0-9-%\\s]+)', 'on'],          router.routes);
         },
 
         "should accept string path": function(router) {
