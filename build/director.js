@@ -1,7 +1,7 @@
 
 
 //
-// Generated on Thu Feb 20 2014 15:02:12 GMT+0100 (CET) by Nodejitsu, Inc (Using Codesurgeon).
+// Generated on Thu May 22 2014 16:09:05 GMT+0200 (CEST) by Nodejitsu, Inc (Using Codesurgeon).
 // Version 1.2.2
 //
 
@@ -213,14 +213,9 @@ Router.prototype.init = function (r) {
     }
   }
   else {
-    var routeTo = dlocHashEmpty() && r ? r : !dlocHashEmpty() ? dloc.hash.replace(/^#/, '') : null;
-    if (routeTo) {
-      window.history.replaceState({}, document.title, routeTo);
-    }
-
     // Router has been initialized, but due to the chrome bug it will not
     // yet actually route HTML5 history state changes. Thus, decide if should route.
-    if (routeTo || this.run_in_init === true) {
+    if (this.run_in_init === true) {
       this.handler();
     }
   }
